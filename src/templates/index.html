@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Restaurant App</title>
+    <link rel="stylesheet" href="/src/styles/main.scss" />
+    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon" />
+  </head>
+  <body>
+    <a href="#home" class="skip-link">Skip to content</a>
+    <header>
+      <nav>
+        <div class="brand">
+          <img src="./images/logo.png" alt="Website Logo" />
+          <h2>Restaurant App</h2>
+        </div>
+        <button class="hamburger-menu" aria-label="Open navigation bar">
+          <div></div>
+          <div></div>
+          <div></div>
+        </button>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#">Favorite</a></li>
+          <li>
+            <a target="_blank" href="https://rendyp-portofolio.vercel.app"
+              >About Us</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="title hero">
+        <img src="./images/heros/hero-image_2.jpg" alt="Hero image" />
+        <h1>Restaurant App</h1>
+        <h2 class="motto">Discover every restaurant in the country</h2>
+      </div>
+      <section id="home">
+        <div class="title">
+          <h2>Explore Restaurant</h2>
+          <h3>Find the best restaurant in your area</h3>
+        </div>
+        <div id="restaurant-item-container"></div>
+      </section>
+      <section>
+        <div class="title">
+          <h2>Discover More</h2>
+        </div>
+        <div class="restaurant-image-container">
+          <div id="sentinel"></div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>Copyright &copy; 2024 - Restaurant App</p>
+    </footer>
+    <script src="/src/scripts/index.js"></script>
+  </body>
+</html>

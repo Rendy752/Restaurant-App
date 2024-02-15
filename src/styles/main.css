@@ -1,0 +1,249 @@
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth; }
+
+html::-webkit-scrollbar {
+  display: none; }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5; }
+
+body {
+  font-family: "Arial", sans-serif;
+  color: #000000; }
+
+@keyframes popUpScale {
+  0% {
+    transform: scale(0);
+    opacity: 0; }
+  80% {
+    transform: scale(1.1); }
+  100% {
+    transform: scale(1);
+    opacity: 1; } }
+
+@keyframes popUpDrop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0; }
+  100% {
+    transform: translateY(0);
+    opacity: 1; } }
+
+.popUpScale {
+  animation: popUpScale 0.5s ease-out; }
+
+nav {
+  font-weight: bold;
+  background-color: #FF6347;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: popUpDrop 0.5s ease-out;
+  position: sticky;
+  top: 0;
+  z-index: 99; }
+  @media (max-width: 360px) {
+    nav {
+      flex-direction: column; } }
+  nav .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem; }
+    nav .brand img {
+      width: 3rem;
+      height: 3rem; }
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.25rem; }
+    @media (max-width: 768px) {
+      nav ul {
+        position: fixed;
+        top: 5rem;
+        right: -100%;
+        padding: 1rem;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #FF6347;
+        transition: right 0.3s ease;
+        z-index: 5; }
+        nav ul.open {
+          right: 0; } }
+    nav ul li {
+      margin: 0 0.3125rem; }
+      nav ul li a {
+        color: #000000;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+        padding: 1rem; }
+        nav ul li a:hover {
+          background-color: #FFF8DC;
+          border-radius: 0.3125rem; }
+  nav .hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    min-height: 3rem;
+    min-width: 3rem;
+    border-radius: 0.3125rem;
+    z-index: 10;
+    animation: popUpScale 0.5s ease-out; }
+    nav .hamburger-menu:hover {
+      background-color: #ff3814; }
+    nav .hamburger-menu:focus {
+      background-color: #ff3814; }
+    @media (max-width: 768px) {
+      nav .hamburger-menu {
+        display: flex; } }
+    nav .hamburger-menu div {
+      margin: auto;
+      width: 2rem;
+      height: 0.25rem;
+      background: #333;
+      border-radius: 10px;
+      transition: all 0.3s linear;
+      position: relative;
+      transform-origin: 1px; }
+
+main {
+  background-color: #FFF;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem; }
+
+.skip-link {
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #008000;
+  color: white;
+  padding: 1rem;
+  z-index: 100;
+  transition: all 0.3s ease-in-out; }
+  .skip-link:hover {
+    background-color: #004d00; }
+  .skip-link:focus {
+    top: 2rem;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+
+section {
+  padding: 2rem; }
+  @media (min-width: 1200px) {
+    section {
+      padding: 4rem; } }
+  section .title {
+    text-align: center;
+    margin-bottom: 0.625rem; }
+
+.title.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: popUpScale 0.5s ease-out; }
+  .title.hero img {
+    width: 100%; }
+    @media (min-width: 1200px) {
+      .title.hero img {
+        margin-top: 1.25rem;
+        min-width: 1000px;
+        width: 0;
+        border: 0.125rem solid #7a1300;
+        border-radius: 0.3125rem; } }
+  .title.hero h1 {
+    margin-bottom: 0.625rem;
+    bottom: 50%;
+    font-size: 2.5em; }
+  .title.hero .motto {
+    top: 50%;
+    font-size: 1.2em; }
+  .title.hero h1, .title.hero .motto {
+    position: absolute;
+    width: 100%;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 0; }
+    @media (min-width: 1200px) {
+      .title.hero h1, .title.hero .motto {
+        min-width: 1000px;
+        width: 0; } }
+
+.restaurant-image-container {
+  display: flex;
+  overflow-x: auto;
+  width: 100%;
+  gap: 0.625rem;
+  padding-bottom: 0.625rem; }
+  .restaurant-image-container::-webkit-scrollbar {
+    display: none; }
+  .restaurant-image-container img {
+    flex: 0 0 auto;
+    border: 0.125rem solid #7a1300;
+    border-radius: 0.3125rem;
+    box-shadow: 0.1rem 0.1rem 0.1rem 0.125rem #7a1300; }
+
+#restaurant-item-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem; }
+  @media (min-width: 600px) {
+    #restaurant-item-container {
+      grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 992px) {
+    #restaurant-item-container {
+      grid-template-columns: repeat(3, 1fr); } }
+  #restaurant-item-container .restaurant-item {
+    display: flex;
+    flex-direction: column;
+    border: 0.125rem solid #7a1300;
+    border-radius: 0.3125rem;
+    box-shadow: 0.1rem 0.1rem 0.1rem 0.125rem #7a1300;
+    position: relative; }
+    #restaurant-item-container .restaurant-item img {
+      width: 100%;
+      height: 20rem;
+      border-radius: 0.3125rem;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0; }
+    #restaurant-item-container .restaurant-item > p {
+      font-weight: bold;
+      padding: 0.5rem;
+      text-align: center;
+      background-color: #FF6347;
+      position: absolute;
+      top: 1rem;
+      left: 0;
+      border-top-right-radius: 0.3125rem;
+      border-bottom-right-radius: 0.3125rem;
+      box-shadow: 0.1rem 0.1rem 0.1rem 0.125rem #7a1300; }
+    #restaurant-item-container .restaurant-item .restaurant-item-body {
+      background-color: #FFF8DC;
+      padding: 2rem; }
+      #restaurant-item-container .restaurant-item .restaurant-item-body .rating {
+        margin-bottom: 0.625rem; }
+      #restaurant-item-container .restaurant-item .restaurant-item-body p {
+        text-align: justify;
+        overflow-y: auto;
+        max-height: 8rem; }
+        #restaurant-item-container .restaurant-item .restaurant-item-body p::-webkit-scrollbar {
+          display: none; }
+
+footer {
+  background-color: #FFA500;
+  padding: 1rem;
+  text-align: center;
+  font-weight: bold; }

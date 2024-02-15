@@ -1,0 +1,327 @@
+$primary-color: #FF6347;
+$secondary-color: #FFA500;
+$background-color: #FFF8DC;
+$text-color: #000000;
+$button-color: #008000;
+
+$base-font-size: 1rem;
+$font-family: 'Arial', sans-serif;
+
+$base-spacing: 0.625rem;
+$double-spacing: $base-spacing * 2;
+$half-spacing: calc($base-spacing / 2);
+
+$border-radius: 0.3125rem;
+$border-color: darken($primary-color, 40%);
+$box-shadow: 0.1rem 0.1rem 0.1rem 0.125rem;
+
+$padding-small: .5rem;
+$padding-medium: .75rem;
+$padding-large: 1rem;
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+body {
+  font-family: $font-family;
+  color: $text-color;
+}
+
+@keyframes popUpScale {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes popUpDrop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.popUpScale {
+  animation: popUpScale 0.5s ease-out;
+}
+
+nav {
+  font-weight: bold;
+  background-color: $primary-color;
+  padding: $padding-large;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: popUpDrop 0.5s ease-out;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+
+  @media (max-width:360px){
+    flex-direction: column;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: $base-spacing;
+    img {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+  ul {
+    display: flex;
+    list-style: none;
+    gap: $double-spacing;
+    @media (max-width: 768px) {
+      position: fixed;
+      top: 5rem;
+      right: -100%;
+      padding: $padding-large;
+      flex-direction: column;
+      justify-content: center;
+      background-color: $primary-color;
+      transition: right 0.3s ease;
+      z-index: 5;
+
+      &.open {
+        right: 0;
+      }  
+    }
+
+    li {
+      margin: 0 $half-spacing;
+      a {
+        color: $text-color;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+        padding: $padding-large;
+        &:hover {
+          background-color: $background-color;
+          border-radius: $border-radius;
+        }
+      }
+    }
+  }
+  .hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    min-height: 3rem;
+    min-width: 3rem;
+    border-radius: $border-radius;
+    z-index: 10;
+    animation: popUpScale 0.5s ease-out;
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+    &:focus {
+      background-color: darken($primary-color, 10%);
+    }
+    @media (max-width: 768px) {
+      display: flex;
+    }
+    div {
+      margin: auto;
+      width: 2rem;
+      height: 0.25rem;
+      background: #333;
+      border-radius: 10px;
+      transition: all 0.3s linear;
+      position: relative;
+      transform-origin: 1px;
+    }
+  } 
+}
+
+main {
+  background-color: #FFF;
+  display: flex;
+  flex-direction: column;
+  gap: $double-spacing;
+}
+
+.skip-link {
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $button-color;
+  color: white;
+  padding: 1rem;
+  z-index: 100;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background-color: darken($button-color, 10%);
+  }
+  &:focus {
+     top: 2rem;
+     left: 50%;
+     transform: translate(-50%, -50%);
+  }
+}
+
+section {
+  padding: $padding-large*2;
+  @media (min-width: 1200px) {
+    padding: $padding-large*4;
+  }
+  .title {
+    text-align: center;
+    margin-bottom: $base-spacing;
+  }
+}
+
+.title.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: popUpScale 0.5s ease-out;
+  
+  img {
+    width: 100%;
+    @media (min-width: 1200px) {
+      margin-top: $double-spacing;
+      min-width: 1000px;
+      width: 0;
+      border: 0.125rem solid $border-color;
+      border-radius: $border-radius;
+    }
+  }
+
+  h1 {
+    margin-bottom: $base-spacing;
+    bottom: 50%;
+    font-size: 2.5em;
+  }
+
+  .motto {
+    top: 50%;
+    font-size: 1.2em;
+  }
+
+  h1, .motto {
+    position: absolute;
+    width: 100%;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 0;
+    @media (min-width: 1200px) {
+      min-width: 1000px;
+      width: 0;
+    }
+  }
+}
+
+.restaurant-image-container {
+  display: flex;
+  overflow-x: auto;
+  width: 100%;
+  gap: $base-spacing;
+  padding-bottom: $base-spacing;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  img {
+    flex: 0 0 auto;
+    border: 0.125rem solid $border-color;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow $border-color;
+  }
+}
+
+#restaurant-item-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $double-spacing;
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 992px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .restaurant-item {
+    display: flex;
+    flex-direction: column;
+    border: 0.125rem solid $border-color;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow $border-color;
+    position: relative;
+    img {
+      width: 100%;
+      height: 20rem;
+      border-radius: $border-radius;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    > p {
+      font-weight: bold;
+      padding: $padding-small;
+      text-align: center;
+      background-color: $primary-color;
+      position: absolute;
+      top: 1rem;
+      left: 0;
+      border-top-right-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+      box-shadow: $box-shadow $border-color;
+    }
+    .restaurant-item-body {
+      background-color: $background-color;
+      padding: $padding-large*2;
+      .rating {
+        margin-bottom: $base-spacing;
+      }
+      p {
+        text-align: justify;
+        overflow-y: auto;
+        max-height: 8rem;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  background-color: $secondary-color;
+  padding: $padding-large;
+  text-align: center;
+  font-weight: bold;
+}
