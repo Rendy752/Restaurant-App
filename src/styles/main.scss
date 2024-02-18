@@ -128,7 +128,7 @@ nav {
       }
     }
   }
-  .hamburger-menu {
+  #hamburger-menu {
     display: none;
     flex-direction: column;
     justify-content: space-around;
@@ -275,7 +275,7 @@ section {
     grid-template-columns: repeat(3, 1fr);
   }
   
-  .restaurant-item {
+  restaurant-item {
     display: flex;
     flex-direction: column;
     border: 0.125rem solid $border-color;
