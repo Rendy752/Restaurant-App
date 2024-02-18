@@ -1,3 +1,4 @@
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -39,6 +40,26 @@ module.exports = {
     }),
     new WorkboxWebpackPlugin.GenerateSW({
       swDest: './sw.bundle.js',
+      runtimeCaching: [
+        {
+          urlPattern: ({ url }) =>
+            url.href.startsWith(
+              'https://restaurant-api.dicoding.dev/images/medium/',
+            ),
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'restaurantapp-image-api',
+          },
+        },
+        {
+          urlPattern: ({ url }) =>
+            url.href.startsWith('https://restaurant-api.dicoding.dev/'),
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'restaurantapp-api',
+          },
+        },
+      ],
     }),
   ],
 };
