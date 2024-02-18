@@ -1,3 +1,4 @@
+import API_ENDPOINT from '../globals/api-endpoint';
 import './restaurant-item';
 
 class ExploreRestaurant extends HTMLElement {
@@ -15,7 +16,7 @@ class ExploreRestaurant extends HTMLElement {
     const restaurantContainer = document.getElementById(
       'restaurant-item-container',
     );
-    fetch('/data/DATA.json')
+    fetch(API_ENDPOINT.LIST)
       .then((response) => response.json())
       .then((data) => {
         data.restaurants.forEach((restaurant) => {

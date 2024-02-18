@@ -1,6 +1,5 @@
 import 'regenerator-runtime'; /* for async await transpile */
 import '../styles/main.scss';
-import '../public/data/DATA.json';
 import App from './views/app';
 
 const app = new App({

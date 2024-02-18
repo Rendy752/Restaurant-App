@@ -1,3 +1,5 @@
+import API_ENDPOINT from '../globals/api-endpoint';
+
 class RestaurantItem extends HTMLElement {
   set restaurant(restaurant) {
     this._restaurant = restaurant;
@@ -6,7 +8,7 @@ class RestaurantItem extends HTMLElement {
 
   render() {
     this.innerHTML = `
-        <img src="${this._restaurant.pictureId}" alt="${this._restaurant.name}" />
+        <img src="${API_ENDPOINT.BASE_IMAGE_URL}/${this._restaurant.pictureId}" alt="${this._restaurant.name}" />
         <p>Kota ${this._restaurant.city}</p>
         <div class="restaurant-item-body">
           <h3 class="rating">Rating: ${this._restaurant.rating}</h3>

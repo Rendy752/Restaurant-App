@@ -1,3 +1,5 @@
+import API_ENDPOINT from '../globals/api-endpoint';
+
 class DiscoverMore extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
@@ -18,7 +20,7 @@ class DiscoverMore extends HTMLElement {
 
     const loadMoreContent = () => {
       const newImage = document.createElement('img');
-      newImage.src = `https://restaurant-api.dicoding.dev/images/medium/${imageIndex}`;
+      newImage.src = `${API_ENDPOINT.BASE_IMAGE_URL}/${imageIndex}`;
       newImage.alt = `Restaurant Image ${imageIndex}`;
       newImage.width = 400;
 
