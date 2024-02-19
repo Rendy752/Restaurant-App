@@ -1,7 +1,9 @@
+import '../../components/restaurant-detail';
+
 const Detail = {
   async render() {
     return `
-          <div>Detail</div>
+          <restaurant-detail></restaurant-detail>
       `;
   },
 };

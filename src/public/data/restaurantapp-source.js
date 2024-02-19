@@ -7,7 +7,7 @@ class RestaurantAppSource {
     return responseJson.restaurants;
   }
 
-  static async detailMovie(id) {
+  static async detailRestaurant(id) {
     const response = await fetch(API_ENDPOINT.DETAIL(id));
     const responseJson = await response.json();
     return responseJson.restaurant;
