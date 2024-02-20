@@ -328,7 +328,7 @@ section {
 
 #restaurant-detail {
   padding: 30px;
-  background-color: #f8f8f8;
+  background-color: $background-color;
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   line-height: 1.6;
@@ -340,15 +340,50 @@ section {
     font-weight: 600;
   }
 
-  img {
-    width: 100%;
-    height: auto;
-    border-radius: 15px;
-    object-fit: cover;
-    margin-bottom: 25px;
+  .restaurant-detail-header {
+    position: relative;
+    text-align: center;
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      object-fit: cover;
+      margin-bottom: 25px;
+      @media (min-width: 768px) {
+        width: 600px;
+      }
+    }
+    #like-button-container {
+      color: #fff;
+      padding: $padding-medium;
+      background-color: $secondary-color;
+      border-radius: $border-radius;
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: darken($secondary-color, 10%);
+        transform: translateX(-50%) scale(1.05);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      #heart-icon {
+        color: #ccc;
+        transition: color 0.3s ease;
+        
+        &.active {
+          color: #ff0000;
+        }
+      }
+    }
   }
 
-  h3 {
+  h3, #like-button-container{
     color: $text-color;
     margin-top: 25px;
     font-size: 22px;
@@ -369,35 +404,6 @@ section {
       color: #444;
       margin-bottom: 10px;
       font-size: 18px;
-    }
-  }
-
-  #like-button-container {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-    button {
-      padding: 15px 30px;
-      font-size: 18px;
-      font-weight: 600;
-      color: #fff;
-      background-color: #ff6347;
-      border: none;
-      border-radius: 50px;
-      box-shadow: 0 10px 20px rgba(255, 99, 71, 0.25);
-      cursor: pointer;
-      transition: all 0.3s ease;
-  
-      &:hover {
-        background-color: #ff4500;
-        transform: translateY(-2px);
-      }
-  
-      &:active {
-        transform: translateY(0);
-      }
     }
   }
 }

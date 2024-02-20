@@ -28,21 +28,22 @@ class RestaurantDetail extends HTMLElement {
       customerReviews,
     } = this._restaurant;
     this.innerHTML = `
-        <h1>Restaurant Detail</h1>
         ${
           this._restaurant
             ? `
             <div id="restaurant-detail">
-                <h2>${name}</h2>
-                <img src="${
-                  API_ENDPOINT.BASE_IMAGE_URL
-                }/${pictureId}" alt="${name}" />
-                <h3>City: ${city}</h3>
-                <h3>Rating: ${rating}</h3>
-                <h3>Address: ${address}</h3>
-                <h3>Categories: ${categories
-                  .map((category) => category.name)
-                  .join(', ')}</h3>
+            <div class="restaurant-detail-header">
+              <img src="${
+                API_ENDPOINT.BASE_IMAGE_URL
+              }/${pictureId}" alt="${name}" />
+              <button id="like-button-container"><span id="heart-icon">❤</span> ${rating}</button>
+            </div>
+            <h2>${name}</h2>
+            <h3>City: ${city}</h3>
+            <h3>Address: ${address}</h3>
+            <h3>Categories: ${categories
+              .map((category) => category.name)
+              .join(', ')}</h3>
                 <h3>Description:</h3>
                 <p>${description}</p>
                 <h3>Menus:</h3>
@@ -72,9 +73,6 @@ class RestaurantDetail extends HTMLElement {
                       )
                       .join('')}
                 </ul>
-                <div id="like-button-container">
-                <button>LIKE</button>
-                </div>
             </div>
             `
             : '<h2>Restaurant detail not found. Please try again later.</h2>'
