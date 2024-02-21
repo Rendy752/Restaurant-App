@@ -11,4 +11,3 @@ class HeroTitle extends HTMLElement {
 }
 
 customElements.define('hero-title', HeroTitle);
-export default HeroTitle;

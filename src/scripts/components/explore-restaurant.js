@@ -1,6 +1,7 @@
 import API_ENDPOINT from '../globals/api-endpoint';
 import DataErrorHandler from '../utils/data-error-handler';
 import ScrollRestaurantItem from '../utils/scroll-restaurant-item';
+import './loading-indicator';
 
 class ExploreRestaurant extends HTMLElement {
   connectedCallback() {
@@ -17,17 +18,20 @@ class ExploreRestaurant extends HTMLElement {
     const restaurantContainer = document.getElementById(
       'restaurant-item-container',
     );
+    const loadingIndicator = document.createElement('loading-indicator');
+    const homeContainer = document.getElementById('home');
+    homeContainer.appendChild(loadingIndicator);
     fetch(API_ENDPOINT.LIST)
       .then((response) => response.json())
       .then((data) => {
+        homeContainer.removeChild(loadingIndicator);
         ScrollRestaurantItem(restaurantContainer, data.restaurants);
       })
       .catch(() => {
-        const homeContainer = document.getElementById('home');
+        homeContainer.removeChild(loadingIndicator);
         DataErrorHandler(homeContainer);
       });
   }
 }
 
 customElements.define('explore-restaurant', ExploreRestaurant);
-export default ExploreRestaurant;

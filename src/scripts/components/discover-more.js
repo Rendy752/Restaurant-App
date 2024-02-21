@@ -61,4 +61,3 @@ class DiscoverMore extends HTMLElement {
 }
 
 customElements.define('discover-more', DiscoverMore);
-export default DiscoverMore;

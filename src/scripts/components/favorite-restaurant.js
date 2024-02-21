@@ -1,6 +1,7 @@
 import FavoriteRestaurantIdb from '../../public/data/favorite-restaurant-idb';
 import DataErrorHandler from '../utils/data-error-handler';
 import ScrollRestaurantItem from '../utils/scroll-restaurant-item';
+import './loading-indicator';
 
 class FavoriteRestaurant extends HTMLElement {
   connectedCallback() {
@@ -16,16 +17,19 @@ class FavoriteRestaurant extends HTMLElement {
     const restaurantContainer = document.getElementById(
       'restaurant-item-container',
     );
+    const loadingIndicator = document.createElement('loading-indicator');
+    const homeContainer = document.getElementById('home');
+    homeContainer.appendChild(loadingIndicator);
     FavoriteRestaurantIdb.getAllRestaurants()
       .then((data) => {
+        homeContainer.removeChild(loadingIndicator);
         ScrollRestaurantItem(restaurantContainer, data);
       })
       .catch(() => {
-        const homeContainer = document.getElementById('home');
+        homeContainer.removeChild(loadingIndicator);
         DataErrorHandler(homeContainer);
       });
   }
 }
 
 customElements.define('favorite-restaurant', FavoriteRestaurant);
-export default FavoriteRestaurant;
