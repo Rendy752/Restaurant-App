@@ -35,46 +35,66 @@ class RestaurantDetail extends HTMLElement {
             ? `
             <div id="restaurant-detail">
             <div class="restaurant-detail-header">
+            <div class="restaurant-detail-image-container">
               <img src="${
                 API_ENDPOINT.BASE_IMAGE_URL
               }/${pictureId}" alt="${name}" />
               <button id="like-button-container"><span id="heart-icon">❤</span> ${rating}</button>
             </div>
-            <h2>${name}</h2>
-            <h3>City: ${city}</h3>
-            <h3>Address: ${address}</h3>
-            <h3>Categories: ${categories
-              .map((category) => category.name)
-              .join(', ')}</h3>
-                <h3>Description:</h3>
-                <p>${description}</p>
-                <h3>Menus:</h3>
-                <h4>Foods:</h4>
-                <ul>
-                    ${menus.foods
-                      .map((food) => `<li>${food.name}</li>`)
-                      .join('')}
-                </ul>
-                <h4>Drinks:</h4>
-                <ul>
-                    ${menus.drinks
-                      .map((drink) => `<li>${drink.name}</li>`)
-                      .join('')}
-                </ul>
-                <h3>Customer Reviews:</h3>
-                <ul>
-                    ${customerReviews
-                      .map(
-                        (review) => `
-                    <li>
-                        <h4>${review.name}</h4>
-                        <p>${review.review}</p>
-                        <p>${review.date}</p>
-                    </li>
-                    `,
-                      )
-                      .join('')}
-                </ul>
+              <h2 class="restaurant-name">${name}</h2>
+              <h3 class="restaurant-address">${address}, ${city}</h3>
+              <div class="restaurant-categories-container">
+              ${categories
+                .map(
+                  (category) =>
+                    `<span class="restaurant-categories">${category.name}</span>`,
+                )
+                .join('')}
+            </div>
+            <hr>
+            </div>
+                <p class="restaurant-description">${description}</p>
+                <div class="menus-container">
+                  <div>
+                    <h2>Foods</h2>
+                    <ul>
+                        ${menus.foods
+                          .map((food) => `<li>${food.name}</li>`)
+                          .join('')}
+                    </ul>
+                  </div>
+                  <div>
+                    <h2>Drinks</h2>
+                    <ul>
+                        ${menus.drinks
+                          .map((drink) => `<li>${drink.name}</li>`)
+                          .join('')}
+                    </ul>
+                  </div>
+                </div>
+                <hr>
+                <div class="reviews-container">
+                  <h3>${customerReviews.length} Reviews</h3>
+                  <div class="add-reviews-container"></div>
+                  <ul class="customer-reviews">
+                      ${customerReviews
+                        .map(
+                          (review) => `
+                      <li>
+                          <div class="review-header">
+                            <img src="/images/profile.png" alt="Profile" />
+                            <div class="review-info">
+                              <p class="reviewer-name">${review.name}</p>
+                              <p class="review-date">~ ${review.date}</p>
+                            </div>
+                          </div>
+                          <p class="reviewer-review">${review.review}</p>
+                      </li>
+                      `,
+                        )
+                        .join('')}
+                  </ul>
+                </div>
             </div>
             `
             : '<h2>Restaurant detail not found. Please try again later.</h2>'
@@ -86,9 +106,10 @@ class RestaurantDetail extends HTMLElement {
       LikeButtonInitiator.init(likeButtonContainer, this._restaurant);
     }
 
+    const addReviewContainer = this.querySelector('.add-reviews-container');
     const addReviewElement = document.createElement('add-review');
     addReviewElement.id = id;
-    this.appendChild(addReviewElement);
+    addReviewContainer.appendChild(addReviewElement);
   }
 }
 

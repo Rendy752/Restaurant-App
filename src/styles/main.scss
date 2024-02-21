@@ -333,77 +333,240 @@ section {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   line-height: 1.6;
 
-  h2 {
-    color: #444;
-    margin-bottom: 15px;
-    font-size: 28px;
-    font-weight: 600;
-  }
-
   .restaurant-detail-header {
-    position: relative;
     text-align: center;
-    img {
-      width: 100%;
-      height: auto;
-      border-radius: 15px;
-      object-fit: cover;
-      margin-bottom: 25px;
-      @media (min-width: 768px) {
-        width: 600px;
+    .restaurant-detail-image-container {
+      position: relative;
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        object-fit: cover;
+        margin-bottom: 25px;
+        @media (min-width: 768px) {
+          width: 600px;
+        }
+      }
+      #like-button-container {
+        color: #fff;
+        padding: $padding-medium;
+        background-color: $secondary-color;
+        border-radius: $border-radius;
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+  
+        &:hover {
+          background-color: darken($secondary-color, 10%);
+          transform: translateX(-50%) scale(1.05);
+          box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+  
+        #heart-icon {
+          color: #ccc;
+          transition: color 0.3s ease;
+          
+          &.active {
+            color: #ff0000;
+          }
+        }
       }
     }
-    #like-button-container {
-      color: #fff;
-      padding: $padding-medium;
-      background-color: $secondary-color;
-      border-radius: $border-radius;
-      position: absolute;
-      bottom: 1rem;
-      left: 50%;
-      transform: translateX(-50%);
-      cursor: pointer;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
 
-      &:hover {
-        background-color: darken($secondary-color, 10%);
-        transform: translateX(-50%) scale(1.05);
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    h2 {
+      color: #444;
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    h3, #like-button-container{
+      color: $text-color;
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    .restaurant-categories-container {
+      margin: 1.5rem;
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+
+      span {
+        padding: 0.5rem 1rem;
+        background-color: $primary-color;
+        color: #fff;
+        border-radius: $border-radius;
+        box-shadow: $box-shadow $border-color;
+        font-weight: bold;
       }
+    }
+  }
 
-      #heart-icon {
-        color: #ccc;
-        transition: color 0.3s ease;
-        
-        &.active {
-          color: #ff0000;
+  .restaurant-description {
+    margin: 1.5rem 0;
+    color: $text-color;
+    font-size: 22px;
+    word-spacing: 0.1rem;
+    text-align: justify;
+
+    @media (min-width: 768px) {
+      font-size: 24px;
+      width: 80%;
+      margin: 1.5rem auto;
+    }
+
+    @media (min-width: 1200px) {
+      font-size: 26px;
+      width: 60%;
+    }
+  }
+  
+  .menus-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1.5rem 0;
+    
+    @media (min-width: 768px) {
+      width: 80%;
+      margin: 1.5rem auto;
+    }
+
+    @media (min-width: 1200px) {
+      width: 60%;
+    }
+
+    h2 {
+      padding: 1rem;
+    }
+
+    ul {
+      padding: 0;
+  
+      li {
+        color: #444;
+        margin-bottom: 10px;
+        font-size: 18px;
+
+        @media (min-width: 768px) {
+          font-size: 20px;
+        }
+
+        @media (min-width: 1200px) {
+          font-size: 22px;
         }
       }
     }
   }
 
-  h3, #like-button-container{
-    color: $text-color;
-    margin-top: 25px;
-    font-size: 22px;
-    font-weight: 500;
-  }
+  .reviews-container {
+    margin: 1.5rem 0;
 
-  p {
-    color: $text-color;
-    margin-top: 15px;
-    font-size: 16px;
-  }
+    @media (min-width: 768px) {
+      width: 80%;
+      margin: 1.5rem auto;
+    }
 
-  ul {
-    list-style-type: none;
-    padding: 0;
+    @media (min-width: 1200px) {
+      width: 60%;
+    }
+    
+    add-review {
+      #review-form {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+  
+        .input-container {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
 
-    li {
-      color: #444;
-      margin-bottom: 10px;
-      font-size: 18px;
+          input {
+            width: 50%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: $border-radius;
+            font-size: 1rem;
+          }
+
+          textarea {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: $border-radius;
+            font-size: 1rem;
+          }
+        }
+
+        button {
+          padding: 0.5rem 1rem;
+          background-color: $secondary-color;
+          color: #fff;
+          border: none;
+          font-weight: bold;
+          border-radius: $border-radius;
+          box-shadow: $box-shadow $border-color;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          &:hover {
+            background-color: darken($secondary-color, 10%);
+            transform: scale(1.05);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+          }
+        }
+      
+      }
+    }
+
+    .customer-reviews {
+      list-style: none;
+      background: $primary-color;
+      padding: 1rem;
+      border-radius: $border-radius;
+
+      li {
+        margin: 1rem 0;
+        padding: 1rem;
+        background: $background-color;
+        border-radius: $border-radius;
+        box-shadow: $box-shadow $border-color;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .review-header {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+
+          .reviewer-name {
+            font-weight: bold;
+          }
+
+          .review-date {
+            font-size: 0.8rem;
+            color: #444;
+          }
+        }
+
+        .reviewer-review {
+          text-align: justify;
+          font-weight: bold;
+        }
+      }
     }
   }
 }

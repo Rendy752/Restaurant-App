@@ -13,13 +13,15 @@ class AddReview extends HTMLElement {
   render() {
     this.innerHTML = `
       <form id="review-form">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+        <div class="input-container">
+          <label for="name"></label>
+          <input type="text" id="name" name="name" placeholder="Name..." required>
 
-        <label for="review">Review:</label>
-        <textarea id="review" name="review" required></textarea>
+          <label for="review"></label>
+          <textarea id="review" name="review" placeholder="Review..." required></textarea>
+        </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit">Post</button>
       </form>
     `;
 
