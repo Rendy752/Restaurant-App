@@ -1,13 +1,12 @@
-import API_ENDPOINT from '../globals/api-endpoint';
+import FavoriteRestaurantIdb from '../../public/data/favorite-restaurant-idb';
 import ScrollRestaurantItem from '../utils/scroll-restaurant-item';
 
-class ExploreRestaurant extends HTMLElement {
+class FavoriteRestaurant extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
         <section id="home">
           <div class="title">
-            <h2>Explore Restaurant</h2>
-            <h3>Find the best restaurant in your area</h3>
+            <h2>Favorite Restaurant</h2>
           </div>
           <div id="restaurant-item-container"></div>
         </section>
@@ -16,10 +15,9 @@ class ExploreRestaurant extends HTMLElement {
     const restaurantContainer = document.getElementById(
       'restaurant-item-container',
     );
-    fetch(API_ENDPOINT.LIST)
-      .then((response) => response.json())
+    FavoriteRestaurantIdb.getAllRestaurants()
       .then((data) => {
-        ScrollRestaurantItem(restaurantContainer, data.restaurants);
+        ScrollRestaurantItem(restaurantContainer, data);
       })
       .catch((error) => {
         const errorMessage = document.createElement('p');
@@ -31,5 +29,5 @@ class ExploreRestaurant extends HTMLElement {
   }
 }
 
-customElements.define('explore-restaurant', ExploreRestaurant);
-export default ExploreRestaurant;
+customElements.define('favorite-restaurant', FavoriteRestaurant);
+export default FavoriteRestaurant;

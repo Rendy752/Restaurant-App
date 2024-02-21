@@ -1,7 +1,9 @@
+import '../../components/favorite-restaurant';
+
 const Favorite = {
   async render() {
     return `
-        <div>Favorite</div>
+        <favorite-restaurant></favorite-restaurant>
     `;
   },
 };

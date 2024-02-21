@@ -14,7 +14,6 @@ const LikeButtonInitiator = {
 
   async _renderButton() {
     const { id } = this._restaurant;
-    console.log(id);
 
     if (await this._isRestaurantExist(id)) {
       this._renderLiked();
