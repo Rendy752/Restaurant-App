@@ -2,6 +2,7 @@ import UrlParser from '../routes/url-parser';
 import RestaurantAppSource from '../../public/data/restaurantapp-source';
 import LikeButtonInitiator from '../utils/like-button-inititator';
 import API_ENDPOINT from '../globals/api-endpoint';
+import './add-review';
 
 class RestaurantDetail extends HTMLElement {
   constructor() {
@@ -17,6 +18,7 @@ class RestaurantDetail extends HTMLElement {
 
   render() {
     const {
+      id,
       name,
       city,
       rating,
@@ -83,6 +85,10 @@ class RestaurantDetail extends HTMLElement {
       const likeButtonContainer = this.querySelector('#like-button-container');
       LikeButtonInitiator.init(likeButtonContainer, this._restaurant);
     }
+
+    const addReviewElement = document.createElement('add-review');
+    addReviewElement.id = id;
+    this.appendChild(addReviewElement);
   }
 }
 
