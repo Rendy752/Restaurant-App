@@ -1,4 +1,5 @@
 import FavoriteRestaurantIdb from '../../public/data/favorite-restaurant-idb';
+import DataErrorHandler from '../utils/data-error-handler';
 import ScrollRestaurantItem from '../utils/scroll-restaurant-item';
 
 class FavoriteRestaurant extends HTMLElement {
@@ -19,12 +20,9 @@ class FavoriteRestaurant extends HTMLElement {
       .then((data) => {
         ScrollRestaurantItem(restaurantContainer, data);
       })
-      .catch((error) => {
-        const errorMessage = document.createElement('p');
-        errorMessage.textContent = `Error: ${error}`;
-        if (restaurantContainer) {
-          restaurantContainer.appendChild(errorMessage);
-        }
+      .catch(() => {
+        const homeContainer = document.getElementById('home');
+        DataErrorHandler(homeContainer);
       });
   }
 }

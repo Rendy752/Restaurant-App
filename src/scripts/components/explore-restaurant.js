@@ -1,4 +1,5 @@
 import API_ENDPOINT from '../globals/api-endpoint';
+import DataErrorHandler from '../utils/data-error-handler';
 import ScrollRestaurantItem from '../utils/scroll-restaurant-item';
 
 class ExploreRestaurant extends HTMLElement {
@@ -21,12 +22,9 @@ class ExploreRestaurant extends HTMLElement {
       .then((data) => {
         ScrollRestaurantItem(restaurantContainer, data.restaurants);
       })
-      .catch((error) => {
-        const errorMessage = document.createElement('p');
-        errorMessage.textContent = `Error: ${error}`;
-        if (restaurantContainer) {
-          restaurantContainer.appendChild(errorMessage);
-        }
+      .catch(() => {
+        const homeContainer = document.getElementById('home');
+        DataErrorHandler(homeContainer);
       });
   }
 }
