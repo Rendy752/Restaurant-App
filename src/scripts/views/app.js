@@ -23,7 +23,27 @@ class App {
     const url = UrlParser.parseActiveUrlWithCombiner();
     const page = routes[url];
     this._content.innerHTML = await page.render();
-    // await page.afterRender();
+
+    const skipLink = document.querySelector('.skip-link');
+    const mainContent = document.querySelector('#main-content');
+
+    skipLink.addEventListener('click', (event) => {
+      event.preventDefault();
+      mainContent.focus();
+    });
+
+    window.addEventListener('load', () => {
+      function updateOnlineStatus() {
+        if (!navigator.onLine) {
+          alert(
+            'You are currently offline. Some features may not be available.',
+          );
+        }
+      }
+
+      window.addEventListener('online', updateOnlineStatus);
+      window.addEventListener('offline', updateOnlineStatus);
+    });
   }
 }
 

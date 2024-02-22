@@ -23,7 +23,13 @@ class FavoriteRestaurant extends HTMLElement {
     FavoriteRestaurantIdb.getAllRestaurants()
       .then((data) => {
         homeContainer.removeChild(loadingIndicator);
-        ScrollRestaurantItem(restaurantContainer, data);
+        if (data.length === 0) {
+          const titleContainer = document.querySelector('.title');
+          titleContainer.innerHTML +=
+            '<div class="error-message">There is no favorite restaurant yet.</div>';
+        } else {
+          ScrollRestaurantItem(restaurantContainer, data);
+        }
       })
       .catch(() => {
         homeContainer.removeChild(loadingIndicator);

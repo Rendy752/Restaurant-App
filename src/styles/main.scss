@@ -488,30 +488,28 @@ section {
           flex-direction: column;
           gap: 2px;
 
-          input {
-            width: 50%;
-            padding: 0.5rem;
+          input, textarea {
+            padding: 1rem;
             border: 1px solid #ccc;
             border-radius: $border-radius;
             font-size: 1rem;
           }
 
-          textarea {
-            padding: 0.5rem;
-            border: 1px solid #ccc;
-            border-radius: $border-radius;
-            font-size: 1rem;
+          input {
+            width: 50%;
           }
         }
 
         button {
-          padding: 0.5rem 1rem;
+          padding: 1rem;
           background-color: $secondary-color;
           color: #fff;
           border: none;
           font-weight: bold;
           border-radius: $border-radius;
           box-shadow: $box-shadow $border-color;
+          width: fit-content;
+          margin-left: auto;
           cursor: pointer;
           transition: all 0.3s ease;
           &:hover {
