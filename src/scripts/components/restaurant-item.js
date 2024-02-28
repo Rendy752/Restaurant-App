@@ -1,4 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import API_ENDPOINT from '../globals/api-endpoint';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 class RestaurantItem extends HTMLElement {
   set restaurant(restaurant) {
@@ -10,7 +13,7 @@ class RestaurantItem extends HTMLElement {
     this.innerHTML = `
         <div>
           <a href="#/detail/${this._restaurant.id}">
-          <img src="${API_ENDPOINT.BASE_IMAGE_URL}/${this._restaurant.pictureId}" alt="${this._restaurant.name}" />
+          <img class="lazyload" data-src="${API_ENDPOINT.BASE_IMAGE_URL}/${this._restaurant.pictureId}" alt="${this._restaurant.name}" />
           <p>Kota ${this._restaurant.city}</p>
           <div class="restaurant-item-body">
             <h3 class="rating">Rating: ${this._restaurant.rating}</h3>

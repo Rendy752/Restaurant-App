@@ -1,4 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import API_ENDPOINT from '../globals/api-endpoint';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 class DiscoverMore extends HTMLElement {
   connectedCallback() {
@@ -20,7 +23,8 @@ class DiscoverMore extends HTMLElement {
 
     const loadMoreContent = () => {
       const newImage = document.createElement('img');
-      newImage.src = `${API_ENDPOINT.BASE_IMAGE_URL}/${imageIndex}`;
+      newImage.dataset.src = `${API_ENDPOINT.BASE_IMAGE_URL}/${imageIndex}`;
+      newImage.classList.add('lazyload');
       newImage.alt = `Restaurant Image ${imageIndex}`;
       newImage.width = 400;
 
