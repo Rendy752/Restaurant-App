@@ -10,7 +10,8 @@
     "test": "jest",
     "test:watch": "jest --watchAll",
     "sass": "node-sass ./src/styles/main.scss ./src/styles/main.css",
-    "lint": "eslint ./src"
+    "lint": "eslint ./src",
+    "build-image": "node sharp.js"
   },
   "keywords": [],
   "author": "your_name <your.email@domain.com>",
@@ -38,6 +39,7 @@
     "node-sass": "^9.0.0",
     "sass": "^1.70.0",
     "sass-loader": "^14.1.0",
+    "sharp": "^0.33.2",
     "style-loader": "^3.3.1",
     "webpack": "^5.90.1",
     "webpack-cli": "^5.1.4",
