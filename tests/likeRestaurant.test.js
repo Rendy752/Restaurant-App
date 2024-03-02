@@ -39,7 +39,7 @@ describe('Liking A Restaurant', () => {
     );
 
     document
-      .querySelector('#like-button-container')
+      .querySelector('[aria-label="Like this restaurant"]')
       .dispatchEvent(new Event('click'));
 
     const restaurant = await FavoriteRestaurantIdb.getRestaurant(1);
