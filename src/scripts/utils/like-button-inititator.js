@@ -1,8 +1,4 @@
 import FavoriteRestaurantIdb from '../../public/data/favorite-restaurant-idb';
-// import {
-//   createLikeButtonTemplate,
-//   createLikedButtonTemplate,
-// } from '../views/templates/template-creator';
 
 const LikeButtonInitiator = {
   async init(likeButtonContainer, restaurant) {
@@ -13,6 +9,10 @@ const LikeButtonInitiator = {
   },
 
   async _renderButton() {
+    if (!this._restaurant) {
+      throw new Error('Restaurant is not defined');
+    }
+
     const { id } = this._restaurant;
 
     if (await this._isRestaurantExist(id)) {
@@ -29,7 +29,11 @@ const LikeButtonInitiator = {
 
   _renderLike() {
     const heartIcon = document.getElementById('heart-icon');
-    heartIcon.classList.remove('active');
+    if (heartIcon) {
+      heartIcon.classList.remove('active');
+    } else {
+      console.error('Element with id "heart-icon" not found');
+    }
 
     const likeButtonContainer = document.getElementById(
       'like-button-container',
@@ -43,7 +47,11 @@ const LikeButtonInitiator = {
 
   _renderLiked() {
     const heartIcon = document.getElementById('heart-icon');
-    heartIcon.classList.add('active');
+    if (heartIcon) {
+      heartIcon.classList.add('active');
+    } else {
+      console.error('Element with id "heart-icon" not found');
+    }
 
     const likeButtonContainer = document.getElementById(
       'like-button-container',
