@@ -212,14 +212,21 @@ section {
   text-align: center;
   animation: popUpScale 0.5s ease-out;
   
-  img {
+  picture {
     width: 100%;
     @media (min-width: 1200px) {
-      margin-top: $double-spacing;
       min-width: 1000px;
       width: 0;
-      border: 0.125rem solid $border-color;
-      border-radius: $border-radius;
+    }
+    img {
+      width: 100%;
+      @media (min-width: 1200px) {
+        margin-top: $double-spacing;
+        min-width: 1000px;
+        width: 0;
+        border: 0.125rem solid $border-color;
+        border-radius: $border-radius;
+      }
     }
   }
 
