@@ -12,7 +12,8 @@
     "sass": "node-sass ./src/styles/main.scss ./src/styles/main.css",
     "lint": "eslint ./src",
     "build-image": "node sharp.js",
-    "minify": "node minify.js"
+    "minify": "node minify.js",
+    "e2e": "codeceptjs run --steps"
   },
   "keywords": [],
   "author": "your_name <your.email@domain.com>",
@@ -25,6 +26,7 @@
     "babel-jest": "^29.6.1",
     "babel-loader": "^8.2.5",
     "clean-webpack-plugin": "^4.0.0",
+    "codeceptjs": "^3.5.14",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
     "eslint": "^8.56.0",
@@ -38,6 +40,7 @@
     "jest": "^29.6.1",
     "jest-environment-jsdom": "^29.6.1",
     "node-sass": "^9.0.0",
+    "playwright": "^1.42.1",
     "sass": "^1.70.0",
     "sass-loader": "^14.1.0",
     "sharp": "^0.33.2",
